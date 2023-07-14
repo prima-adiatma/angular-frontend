@@ -14,9 +14,24 @@ export class EmployeeService {
 
   }
 
+
+// REST API CALL
   getEmployeesList(): Observable<Employee[]>{
     // return this.httpClient.get<Employee[]>(`${this.baseURL}`)
-
-    return this.httpClient.get<Employee[]>(this.baseURL) // new update on Angular CLI 16
+    return this.httpClient.get<Employee[]>(this.baseURL)
   }
+
+  // createEmployee(employee: Employee): Observable<any> // use any if don't know the response of the http
+  createEmployee(employee: Employee): Observable<Object>{
+    return this.httpClient.post(`${this.baseURL}`, employee);
+    // return this.httpClient.post(this.baseURL, employee);
+  }
+
+  getEmployeeById(id: Employee): Observable<Employee> {
+    // return this.httpClient.get<Employee>(`${this.baseURL}/${id}`);
+    return this.httpClient.get<Employee>(this.baseURL + '/' + id);
+  }
+
+ 
+
 }

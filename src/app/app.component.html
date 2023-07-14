@@ -4,10 +4,14 @@
             <!-- routerLink value from path in app-routing.module.ts -->
             <a routerLink= "employees" routerLinkActive="active" class = "nav-link">Employee List</a>
         </li>
+        <li class="nav-item">
+            <!-- routerLink value from path in app-routing.module.ts -->
+            <a routerLink="create-employee" routerLinkActive="active" class="nav-link">Add Employee</a>
+        </li>
     </ul>
 </nav>
 
-<!-- <h1 class="text-center">{{title}}</h1> -->
+<h1 class="text-center">{{title}}</h1>
 <div class="container">
     <!-- <app-employee-list></app-employee-list> -->
     <router-outlet></router-outlet>
