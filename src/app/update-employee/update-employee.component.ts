@@ -27,10 +27,10 @@ export class UpdateEmployeeComponent {
   }
 
   // method subscribe can process a synchronous response
-  // Instead of passing separate callback arguments, use an observer argument. 
+  // Instead of passing separate callback arguments, use an observer argument.
   // Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
   // saveEmployee() {
-  //   this.employeeService.createEmployee(this.employee).subscribe(data => { 
+  //   this.employeeService.createEmployee(this.employee).subscribe(data => {
 
   //     console.log(data)
   //   },
@@ -38,23 +38,46 @@ export class UpdateEmployeeComponent {
 
   // }
 
-  saveEmployee() {
-    this.employeeService.createEmployee(this.employee).subscribe({
-      next: (data) => console.log(data),
-      error: (e) => console.error(e),
-      complete: () => this.goToEmployeeList() // if success navigate to employee list page
-      // complete: () => console.info('complete')
-    });
+// ----- Syntax without update method can working well -----
+  // saveEmployee() {
+  //   this.employeeService.createEmployee(this.employee).subscribe({
+  //     next: (data) => console.log(data),
+  //     error: (e) => console.error(e),
+  //     complete: () => this.goToEmployeeList() // if success navigate to employee list page
+  //     // complete: () => console.info('complete')
+  //   });
+  // }
+
+  // // navigate data from update employee to employee list page
+  // goToEmployeeList() {
+  //   this.router.navigate(['/employees']);
+  // }
+
+  // onSubmit() {
+  //   console.log(this.employee);
+  //   this.saveEmployee();
+  // }
+  // ----- Syntax without update method can working well -----
+
+  onSubmit(){
+
+    // this.employeeService.updateEmployee(this.id, this.employee).subscribe(data => {
+    //   this.goToEmployeeList()
+    // },
+    //   error => console.log(error));
+
+    this.employeeService.updateEmployee(this.id, this.employee).subscribe({
+      // next: (data) => { console.log(data), data = this.goToEmployeeList },
+      next: (data) => {console.log(data), this.goToEmployeeList() },
+      error: (error) => console.log(error),
+      complete: () => console.log("Data init completed!")
+    })
+
   }
 
   // navigate data from update employee to employee list page
   goToEmployeeList() {
     this.router.navigate(['/employees']);
-  }
-
-  onSubmit() {
-    console.log(this.employee);
-    this.saveEmployee();
   }
 
 }

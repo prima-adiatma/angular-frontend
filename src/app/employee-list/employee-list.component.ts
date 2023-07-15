@@ -44,4 +44,16 @@ export class EmployeeListComponent{
     this.router.navigate(['update-employee', id])
   }
 
+  deleteEmployee(id: number){
+    this.employeeService.deleteEmployee(id).subscribe({
+      next: (data) => { console.log(data), this.getEmployees() },
+      error: (error) => console.log(error),
+      complete: () => console.log("Data init completed!")
+    });
+  }
+
+  employeeDetails(id: number) {
+    this.router.navigate(['employee-details', id])
+  }
+
 }

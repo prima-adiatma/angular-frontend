@@ -6,13 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component'; // new component
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
-import { UpdateEmployeeComponent } from './update-employee/update-employee.component'; // new component
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component'; // new component
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeListComponent, // new component
-    CreateEmployeeComponent, UpdateEmployeeComponent // new component
+    CreateEmployeeComponent, UpdateEmployeeComponent, EmployeeDetailsComponent // new component
   ],
   // this is import array
   imports: [
